@@ -31,7 +31,7 @@ resource "aws_subnet" "public" {
   availability_zone       = "${var.availability_zones[count.index]}"
   map_public_ip_on_launch = true
 
-  tags {
+  tags = {
     Name        = "PublicSubnet"
     Project     = "${var.project}"
     Environment = "${var.environment}"
@@ -51,7 +51,7 @@ resource "aws_subnet" "private" {
   cidr_block        = "${var.private_subnet_cidr_blocks[count.index]}"
   availability_zone = "${var.availability_zones[count.index]}"
 
-  tags {
+  tags = {
     Name        = "PrivateSubnet"
     Project     = "${var.project}"
     Environment = "${var.environment}"
