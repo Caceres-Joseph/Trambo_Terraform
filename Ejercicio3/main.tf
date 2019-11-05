@@ -62,6 +62,33 @@ resource "aws_subnet" "private" {
 
   #-------------
   # Route table
+  
+resource "aws_route_table" "private" {
+  count = "${length(var.private_subnet_cidr_blocks)}"
+
+  vpc_id        = "${aws_vpc.my_vpc.id}"
+
+  tags {
+    Name        = "PrivateRouteTable"
+    Project     = "${var.project}"
+    Environment = "${var.environment}"
+  }
+}
+resource "aws_route_table" "public" {
+  vpc_id        = "${aws_vpc.my_vpc.id}"
+
+  tags {
+    Name        = "PublicRouteTable"
+    Project     = "${var.project}"
+    Environment = "${var.environment}"
+  }
+}
+
+
+
+  #-------------
+  # Association Route table
+  
 resource "aws_route_table_association" "private" {
   count = "${length(var.private_subnet_cidr_blocks)}"
 
