@@ -68,7 +68,7 @@ resource "aws_route_table" "private" {
 
   vpc_id        = "${aws_vpc.my_vpc.id}"
 
-  tags {
+  tags = {
     Name        = "PrivateRouteTable"
     Project     = "${var.project}"
     Environment = "${var.environment}"
@@ -77,7 +77,7 @@ resource "aws_route_table" "private" {
 resource "aws_route_table" "public" {
   vpc_id        = "${aws_vpc.my_vpc.id}"
 
-  tags {
+  tags = {
     Name        = "PublicRouteTable"
     Project     = "${var.project}"
     Environment = "${var.environment}"
