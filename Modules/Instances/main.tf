@@ -8,7 +8,7 @@ resource "aws_instance" "ec2_joseph" {
   instance_type               = "t2.micro"
   availability_zone           = "${var.availability_zones[0]}"  
   monitoring                  = true
-  subnet_id                   = "${aws_subnet.public.*.id[0]}"
+  subnet_id                   = "${var.public_subnet_ids[0]}"
   associate_public_ip_address = true
 
   tags = {

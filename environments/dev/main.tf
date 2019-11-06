@@ -1,7 +1,7 @@
 
 /*
 +--------------------------------
-| AWS CREDENTIALS
+| Credentials
 +--------------------------------
 */
 provider "aws" {
@@ -12,7 +12,7 @@ provider "aws" {
 
 /*
 +--------------------------------
-| NETWORK
+| Network
 +--------------------------------
 */
 
@@ -21,4 +21,22 @@ module "newtwork" {
   project = "${var.project}"
   environment="${var.environment}"
   region="${var.region}"
+}
+
+
+
+/*
++--------------------------------
+| Instances
++--------------------------------
+*/
+
+module "instances" {
+  source = "./../modules/instances"
+  project = "${var.project}"
+  environment="${var.environment}"
+  region="${var.region}"
+
+  public_subnet_ids= "${module.newtwork.public_subnet_ids}"
+  availability_zones= "${module.newtwork.availability_zones}"
 }
