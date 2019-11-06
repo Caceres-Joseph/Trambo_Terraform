@@ -19,6 +19,6 @@ provider "aws" {
 module "newtwork" {
   source = "./../Modules/Network"
   project = "${var.project}"
-  eviroment="${var.environment}"
+  environment="${var.environment}"
   region="${var.region}"
 }
