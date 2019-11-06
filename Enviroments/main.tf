@@ -6,6 +6,7 @@
 */
 provider "aws" {
   shared_credentials_file = "${var.location_aws_credentials}"
+  region="${var.region}"
 }
 
 
